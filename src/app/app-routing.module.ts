@@ -4,12 +4,16 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'jogo-lista',
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    path: 'jogo-cadastro',
+    loadChildren: () => import('./jogo-cadastro/jogo-cadastro.module').then( m => m.JogoCadastroPageModule)
+  },
+  {
+    path: 'jogo-lista',
+    loadChildren: () => import('./jogo-lista/jogo-lista.module').then( m => m.JogoListaPageModule)
   }
 ];
 
