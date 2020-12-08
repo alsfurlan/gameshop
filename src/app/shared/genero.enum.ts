@@ -2,7 +2,7 @@ export enum Genero {
     FPS = 'FPS',
     RPG = 'RPG',
     TABULEIRO = 'Tabuleiro',
-    LUDICO = 'Lúcido',
+    LUDICO = 'Lúdico',
     CORRIDA = 'Corrida',
     ESPORTE = 'Esporte'
 }

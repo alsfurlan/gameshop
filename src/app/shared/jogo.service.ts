@@ -1,33 +1,42 @@
-import { Injectable } from '@angular/core';
-import { Genero } from './genero.enum';
-import { Jogo } from './jogo';
+import { Injectable } from "@angular/core";
+import { Genero } from "./genero.enum";
+import { Jogo } from "./jogo";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class JogoService {
-
   private jogos: Jogo[];
 
-  constructor() { 
+  constructor() {
     this.jogos = [
       {
         codigo: 1,
-        nome: 'Xadrez',
-        valor: 25.90,
-        logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHonRz-2xTBzwy6uI_WPOfE66pBQsB4QYMj7AU9s3vRGoeuijchLHa-2fpSdY&usqp=CAc',
+        nome: "Xadrez",
+        valor: 25.9,
+        logo:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHonRz-2xTBzwy6uI_WPOfE66pBQsB4QYMj7AU9s3vRGoeuijchLHa-2fpSdY&usqp=CAc",
         genero: Genero.TABULEIRO,
-        dataLancamento: new Date(1970, 0, 1)
+        dataLancamento: new Date(1970, 0, 1),
       },
       {
         codigo: 2,
-        nome: 'CS: GO',
-        valor: 0.00,
-        logo: 'https://banzika.com.br/image/cache/catalog/data/produtos/adesivos/csgo/csgologocores-1000x1000.jpg',
+        nome: "CS: GO",
+        valor: 0.0,
+        logo:
+          "https://banzika.com.br/image/cache/catalog/data/produtos/adesivos/csgo/csgologocores-1000x1000.jpg",
         genero: Genero.FPS,
-        dataLancamento: new Date(2000, 11, 15)
-      }
-    ];    
+        dataLancamento: new Date(2000, 11, 15),
+      },
+      {
+        codigo: 3,
+        nome: "Need for Speed: Most Wanted",
+        valor: "10.50",
+        logo: "https://www.grupobonobo.com.br/wp-content/uploads/2019/02/nfsmw.png",
+        genero: Genero.CORRIDA,
+        dataLancamento: new Date(2006, 2, 2)
+      },
+    ];
   }
 
   getJogos() {
@@ -35,7 +44,16 @@ export class JogoService {
   }
 
   excluir(jogo: Jogo) {
-    this.jogos = this.jogos.filter(j => j.codigo !== jogo.codigo);
+    this.jogos = this.jogos.filter((j) => j.codigo !== jogo.codigo);
   }
-  
+
+  salvar(jogo: Jogo) {
+    // this.jogos.push(jogo);
+    this.jogos = [...this.jogos, jogo];
+    console.log(this.jogos);
+  }
+
+  getCodigo() {
+    return this.jogos.length + 1;
+  }
 }
