@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./jogo-cadastro/jogo-cadastro.module').then( m => m.JogoCadastroPageModule)
   },
   {
+    path: 'jogo-cadastro/:codigo',
+    loadChildren: () => import('./jogo-cadastro/jogo-cadastro.module').then( m => m.JogoCadastroPageModule)
+  },
+  {
     path: 'jogo-lista',
     loadChildren: () => import('./jogo-lista/jogo-lista.module').then( m => m.JogoListaPageModule)
   }

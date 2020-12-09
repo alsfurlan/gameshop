@@ -5,6 +5,6 @@ export class Jogo {
     nome: string;
     valor: number | string; 
     logo: string;
-    genero: Genero;
-    dataLancamento: Date;
+    genero: Genero | string;
+    dataLancamento: Date | string;
 }

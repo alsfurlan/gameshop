@@ -25,7 +25,7 @@
               <strong>{{jogo.valor | currency: 'R$ '}}</strong>
             </ion-text>
           </h3>
-          <h3>Gênero: {{ getDescricaoGenero(jogo.genero) }}</h3>
+          <h3>Gênero: {{ jogo.genero }}</h3>
           <h4>Lançamento: {{jogo.dataLancamento | date: 'dd/MM/yyyy' }}</h4>
         </ion-label>    
       </ion-item>

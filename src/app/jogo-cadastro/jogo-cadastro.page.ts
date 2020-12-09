@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Genero } from '../shared/genero.enum';
 import { Jogo } from '../shared/jogo';
 import { JogoService } from '../shared/jogo.service';
@@ -16,10 +16,20 @@ export class JogoCadastroPage implements OnInit {
 
   constructor(
     private jogoService: JogoService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { 
     this.jogo = new Jogo();    
-    this.jogo.codigo = this.jogoService.getCodigo();  
+    
+    const codigo = parseInt(this.activatedRoute.snapshot.paramMap.get('codigo'));
+    if(codigo) {
+      this.jogo = this.jogoService.getJogo(codigo);
+      if(this.jogo.dataLancamento instanceof Date) {
+        this.jogo.dataLancamento = this.jogo.dataLancamento.toISOString();
+      }
+    } else {
+      this.jogo.codigo = this.jogoService.getCodigo();
+    }
   }
 
   ngOnInit() {
@@ -28,6 +38,7 @@ export class JogoCadastroPage implements OnInit {
   salvar() {
     console.log(this.jogo);
     this.jogo.valor = parseFloat(this.jogo.valor.toString());
+    this.jogo.genero = Genero[this.jogo.genero];
     this.jogoService.salvar(this.jogo);    
     this.router.navigate(['jogo-lista'])
   }

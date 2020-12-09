@@ -48,12 +48,21 @@ export class JogoService {
   }
 
   salvar(jogo: Jogo) {
-    // this.jogos.push(jogo);
-    this.jogos = [...this.jogos, jogo];
+    const indice = this.jogos.findIndex(j => j.codigo === jogo.codigo);
+    if(indice === -1) {
+      // this.jogos.push(jogo);
+      this.jogos = [...this.jogos, jogo];
+    } else {
+      this.jogos[indice] = {...jogo};
+    }
     console.log(this.jogos);
   }
 
   getCodigo() {
     return this.jogos.length + 1;
+  }
+
+  getJogo(codigo: number): Jogo {
+    return this.jogos.find(j => j.codigo === codigo);
   }
 }
